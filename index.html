@@ -1,22 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GeoTemp</title>
-    <script type="module" src="script.js" defer></script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <form class="form">
-      <input type="text" id="mapInput" placeholder="Consultar a cidade" required>
-      <button type="submit" id="btnConsult">Consultar</button>
-    </form>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GeoTemp</title>
+        <script type="module" src="script.js" defer></script>
+    </head>
+    <body>
+        
+        <div id="modalContent">
 
-    <input type="text" id="resp">
-    
-    <script type="module" src="./main.js"></script>
+            <span class="close">&times;</span>
+            <button type="button" id="btnTempDays">Proximos Dias</button>
 
-  </body>
+            <div class="informationContent">
+                <div class="content">
+                    <label for="city">Nome da cidade: </label>
+                    <input type="text" id="city" disabled>
+                </div>
+                <div class="content">   
+                    <label for="date">Data: </label>
+                    <input type="text" id="date" disabled>
+                </div>
+                <div class="content">   
+                    <p>Temperaturas</p>
+                </div>
+                <div class="content">
+                    <label for="today">Atual: </label>
+                    <input type="text" id="today">
+                </div>
+                <div class="content">
+                    <label for="max">Maxima: </label>
+                    <input type="text" id="max">
+                </div>
+                <div class="content">
+                    <label for="min">Minima: </label>
+                    <input type="text" id="min">
+                </div>
+                <div class="content">
+                    <p>Tipo do clima atual: </p>
+                    <img src="" id="temp" alt="Clima Atual" height="42" width="42" />
+                </div>
+                <div class="content">
+                    <label for="rain">Probabilidade de chuva: </label>
+                    <input type="text" id="rain">
+                </div>
+                <div class="content">
+                    <p>Fase da Lua: </p>
+                    <img src="" id="moonPhase" alt="Fase da Lua" height="42" width="42">
+                </div>
+            </div>
+        </div>
+
+        <div id="modalDays">
+            <span class="closeDays">&times;</span>
+        </div>
+
+        <script>
+            const modalDays = document.getElementById('modalDays');
+            for (let i = 1; i <= 3; i++) {
+                const html = `
+                    <div class="dataContent">
+                        <div class="content">
+                            <label for="date${i}">Data: </label>
+                            <input type="text" id="date${i}">
+                        </div>
+                        <div class="content">
+                            <p>Temperaturas</p>
+                        </div> 
+                        <div class="content">  
+                            <label for="max${i}">Maxima: </label>
+                            <input type="text" id="max${i}">
+                        </div> 
+                        <div class="content">  
+                            <label for="min${i}">Minima: </label>
+                            <input type="text" id="min${i}">
+                        </div>
+                        <div class="content"> 
+                            <p>Tipo do clima atual: </p>
+                            <img src="" id="temp${i}" alt="Clima Atual" height="42" width="42" />
+                        </div>
+                        <div class="content"> 
+                            <label for="rain${i}">Probabilidade de chuva: </label>
+                            <input type="text" id="rain${i}">
+                        </div>
+                        <hr>
+                    </div>
+                `;
+                modalDays.innerHTML += html;
+            }
+        </script>
+
+        <div id="map"></div>
+        <div class="search">
+            <form class="form">
+                <input type="text" id="mapInput" placeholder="Consultar a cidade" required>
+                <button type="submit" id="btnConsult">Consultar</button>
+            </form>
+
+            <select id="citySelect">
+                <option>Selecione uma cidade consultada</option>
+            </select>
+        </div>
+        
+        
+        <script type="module" src="./main.js"></script>
+
+    </body>
 </html>
