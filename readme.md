@@ -17,3 +17,10 @@ Para executar a aplicação junto com o teste sera necessario abrir um segundo t
 - Escolher o browser e start E2E
 - Specs / geotemp
 o teste do app sera iniciado
+
+
+Diretorio:
+- index.html = pagina da aplicação
+- main.js = script com a renderização do mapa
+- script.js = script com os eventos e requisiçoes da api 
+- style.css = estilo da aplicação
