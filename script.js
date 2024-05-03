@@ -15,6 +15,7 @@ function addCityToLocal(city) {
         localStorage.setItem('consultCities', JSON.stringify(cities));
     }
 
+    // função para gerar um option no select com a cidade
     citySelect.innerHTML = '<option>Selecione uma cidade consultada</option>'; // Limpa e adiciona a opção padrão
     cities.forEach(city => {
         const option = document.createElement('option');
@@ -24,7 +25,7 @@ function addCityToLocal(city) {
     });
 }
 
-
+// função que faz uma requisição na api https://openweathermap.org/api/geocoding-api. e retorna com as coordenadas e manda para a função getWeather
 export async function searchCity(mapInputValue){
     console.log(mapInputValue)
     if(mapInputValue.length === 0){
@@ -48,6 +49,7 @@ export async function searchCity(mapInputValue){
     }
 }
 
+// função que recebe as coordenadas e faz a requisição na api https://hgbrasil.com/status/weather, mandando a latitude e longitude e recebendo o json dos tempos
 async function getWeather(lat, lon){
     
     if((lat || lon) === 0){
@@ -62,6 +64,7 @@ async function getWeather(lat, lon){
         };
         const data = await response.json();
 
+        // Inserindo os dados do json nos campos de imput dos dados para amostragem
         document.getElementById('modalContent').style.display = "block";
         inputCity.value = data.results.city_name;
         inputDate.value = data.results.date;

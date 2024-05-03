@@ -8,7 +8,7 @@
         <script type="module" src="script.js" defer></script>
     </head>
     <body>
-        
+        <!-- Modal que apresenta os dados da cidade -->
         <div id="modalContent">
 
             <span class="close">&times;</span>
@@ -53,6 +53,7 @@
             </div>
         </div>
 
+        <!-- Modal que apresenta as temperaturas dos tres proximos dias -->
         <div id="modalDays">
             <span class="closeDays">&times;</span>
         </div>
@@ -94,11 +95,12 @@
 
         <div id="map"></div>
         <div class="search">
+            <!-- Formulario onde faz a consulta da cidade  -->
             <form class="form">
                 <input type="text" id="mapInput" placeholder="Consultar a cidade" required>
                 <button type="submit" id="btnConsult">Consultar</button>
             </form>
-
+            <!-- Select com os dadfos em cache -->
             <select id="citySelect">
                 <option>Selecione uma cidade consultada</option>
             </select>
