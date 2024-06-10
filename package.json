@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "cypress": "^13.8.1",
-    "vite": "^5.2.10"
+    "vite": "^5.2.13"
   },
   "dependencies": {
     "ol": "latest"
